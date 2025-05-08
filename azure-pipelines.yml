@@ -11,15 +11,16 @@ stages:
   - job: Buildjob
     displayName: 'Run Hello world script'
     steps:
-    - script: echo 'Hello world'
-      displayName: 'Print Hello World'
+    - task: Maven@3
+      inputs:
+        goals: 'clean install'
+      displayName: 'Build with Maven'
 
 - stage: Deploy
   displayName: Deploy stage
-  DependsOn: Build
   jobs:
-    - job: Deployjob
-      displayName: 'Run Deploy script'
-      steps:
-        - script: echo 'Deploying application'
-          displayName: 'Print deploying'
+  - job: Deployjob
+    displayName: 'Run Deploy script'
+    steps:
+    - script: echo 'Deploying application'
+      displayName: 'Print deploying'
