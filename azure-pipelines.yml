@@ -1,8 +1,8 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+pool: Hosted Agent
+#  vmImage: ubuntu-latest
 
 stages:
 - stage: Build
@@ -11,10 +11,8 @@ stages:
   - job: Buildjob
     displayName: 'Run Hello world script'
     steps:
-    - task: Maven@3
-      inputs:
-        goals: 'clean install'
-      displayName: 'Build with Maven'
+    - script: echo "Hello World"
+      displayName: 'Print Hello world'
 
 - stage: Deploy
   displayName: Deploy stage
