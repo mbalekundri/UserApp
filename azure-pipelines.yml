@@ -13,3 +13,13 @@ stages:
     steps:
     - script: echo 'Hello world'
       displayName: 'Print Hello World'
+
+- stage: Deploy
+  displayName: Deploy stage
+  DependsOn: Build
+  jobs:
+    - job: Deployjob
+      displayName: 'Run Deploy script'
+      steps:
+        - script: echo 'Deploying application'
+          displayName: 'Print deploying'
